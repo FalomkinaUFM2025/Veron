@@ -51,5 +51,5 @@ def put_russian_text(img, text, position, pont_scale, color, thickness):
     ]
 
     #создаем временное изображение для тэкста
-
+# дз создать презентацию нашему проекту
 
