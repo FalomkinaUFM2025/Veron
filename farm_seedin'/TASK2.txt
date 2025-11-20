@@ -1,0 +1,116 @@
+Farmer John has n pastures, all of which he would like to seed with grass.
+The pastures are numbered 1, 2, . . ., n.
+Farmer John has four different types of grass seed, numbered 1, 2, 3,
+and 4. He’ll choose one of these grass types for each pasture.
+Farmer John also has m cows. Each cow has two favorite pastures in
+which it eats grass. Each cow cares only about its two favorite pastures, no
+others. For a healthy diet, each cow requires that its two pastures have different
+types of grass. For example, for some given cow, it would be okay if one
+of its pastures had grass type 1 and the other had grass type 4. But it would
+not be okay if both of its pastures had grass type 1.
+A pasture might be the favorite of more than one cow. But it’s guaranteed
+that a pasture is the favorite of no more than three cows.
+Determine the grass type to use in each pasture. Each pasture is required
+to use a grass type between 1 and 4, and each cow’s two favorite pastures
+must have different grass types.
+Input
+Read input from the file named revegetate.in.
+The input consists of the following lines:
+• A line containing two integers separated by a space. The first integer
+is n, the number of pastures; it’s between 2 and 100. The second
+integer is m, the number of cows; it’s between 1 and 150.
+• m lines, each of which gives the two favorite pasture numbers for a
+cow. These pasture numbers are integers between 1 and n and are
+separated by a space.
+Output
+Write output to the file named revegetate.out.
+Output a valid way to seed the pastures. The output is a line of n characters,
+each of which is a '1', '2', '3', or '4'. The first character is the grass
+type for pasture 1, the second is the grass type for pasture 2, and so on.
+We can interpret these n characters as an integer with n digits. For example,
+if we have the five grass types '11123', then we can interpret this as
+the integer 11123.
+This integer interpretation comes into play when we have a choice of
+what to output. If there are multiple valid ways to seed the pastures, we must
+output the one that’s smallest when interpreted as an integer. For example,
+if both '11123' and '22123' are valid, we output the string '11123' because
+11123 is less than 22123.
+
+
+
+
+test cases:
+8 6
+5 4
+2 4
+3 5
+4 1
+2 1
+5 2
+
+
+
+
+The first line of the test case tells us that we have eight pastures. They’re
+
+numbered from 1 to 8. The first line also tells us that we have six cows. The
+
+problem doesn’t specify a numbering for the cows, so I’ll just number them
+
+starting at 0. The two favorite pastures of each cow are in Table 7-1 for easy
+
+reference.
+Table 7-1: Farm Seeding Example, Cows
+
+Cow Pasture 1 Pasture 2
+
+0          5               4
+
+1          2               4
+
+2          3               5
+
+3          4               1
+
+4          2               1
+
+5          5               2
+
+In this problem, we’re being asked to make n decisions. What grass type
+
+should we use for pasture 1? What grass type should we use for pasture 2?
+
+Pasture 3? Pasture 4? And so on, all the way up to pasture n. One strategy
+
+for these kinds of problems is to make one decision at a time, without making
+
+a mistake on any of them. If we manage to finish with decision n and
+
+haven’t made any mistakes along the way, then our solution must be correct.
+
+
+
+
+Let’s go through the pastures from 1 to 8 and see if we can assign a grass
+
+type to each of them. We need to prioritize choosing small-numbered grass
+
+types so that we end with the smallest grass types when interpreted as a
+
+number.
+
+What grass type should we choose for pasture 1? The only cows that
+
+care about pasture 1 are cows 3 and 4, so we focus only on those two. If we
+
+had already chosen grass types for some of these cows’ pastures, then we’d
+
+have to be careful with our choice for pasture 1. We wouldn’t want to give
+
+some cow two pastures with the same grass type, because that would break
+
+the rules! We haven’t chosen any grass types yet, so nothing can go wrong
+
+no matter what we choose for pasture 1. Since we want the smallest grass
+
+types, though, we’ll choose grass type 1.
